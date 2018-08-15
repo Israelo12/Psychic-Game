@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Letter</title>
+</head>
+<body>
+ <h1>What Letter am I thinking of?</h1>
+<h3>Guessed Letters:</h3><p id="lettersGuessed"></p>
+<h3>Guesses remaining:</h3><p id="guesses-left"></p>
+<h3>Wins:</h3><p id="wins"></p>
+<h3>Losses:</h3><p id="losses"></p>
+ <script type="text/javascript">
+ var completter = "";
+var alphabet = "a,b,c,d,e,f,ghijklmnopqrstuvwxyz";
+var guessesleft = 9;
+var guessedletters = [];
+var wins = 1;
+var losses = 1;
+
+completter = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+  
+document.onkeyup = function(event) {
+
+guessedletters.push(event.key);
+document.getElementById("lettersGuessed").innerHTML = guessedletters;
+
+if (event.key===completter){
+	console.log("win");
+	document.getElementById("wins").innerHTML = wins ++;
+	alert("WHAT!? Inconceivable!");
+	resetgame();
+}
+ 
+else {
+	guessesleft --;
+		document.getElementById("guesses-left").innerHTML = guessesleft;
+
+if (guessesleft === 0){
+        console.log("loss");
+        document.getElementById("losses").innerHTML = losses ++;
+        alert("HAHA! You are out of Guesses!")
+         	resetgame();
+         }
+}
+ };
+
+function resetgame(){
+	completter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	console.log(completter)
+	guessesleft=9
+	guessedletters=[]
+	document.getElementById("lettersGuessed").innerHTML = guessedletters;
+	document.getElementById("guesses-left").innerHTML =  guessesleft;
+}
+ </script>
+ </body>
+</html>
