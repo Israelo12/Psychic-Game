@@ -1,58 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Guess the Letter</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script> 
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<script src="assets/javascript/game.js"></script>
+	<title>Crystal Game</title>
+
 </head>
 <body>
- <h1>What Letter am I thinking of?</h1>
-<h3>Guessed Letters:</h3><p id="lettersGuessed"></p>
-<h3>Guesses remaining:</h3><p id="guesses-left"></p>
-<h3>Wins:</h3><p id="wins"></p>
-<h3>Losses:</h3><p id="losses"></p>
- <script type="text/javascript">
- var completter = "";
-var alphabet = "a,b,c,d,e,f,ghijklmnopqrstuvwxyz";
-var guessesleft = 9;
-var guessedletters = [];
-var wins = 1;
-var losses = 1;
+	<header>
+		<div id="legend"><h1>Crystal Collector!</h1></div>
+		<h3>Collect the correct amount of crystals and win. Be careful not to exceed your quota!</h3>
+	</header>
 
-completter = alphabet[Math.floor(Math.random() * alphabet.length)];
-
-  
-document.onkeyup = function(event) {
-
-guessedletters.push(event.key);
-document.getElementById("lettersGuessed").innerHTML = guessedletters;
-
-if (event.key===completter){
-	console.log("win");
-	document.getElementById("wins").innerHTML = wins ++;
-	alert("WHAT!? Inconceivable!");
-	resetgame();
-}
- 
-else {
-	guessesleft --;
-		document.getElementById("guesses-left").innerHTML = guessesleft;
-
-if (guessesleft === 0){
-        console.log("loss");
-        document.getElementById("losses").innerHTML = losses ++;
-        alert("HAHA! You are out of Guesses!")
-         	resetgame();
-         }
-}
- };
-
-function resetgame(){
-	completter = alphabet[Math.floor(Math.random() * alphabet.length)];
-	console.log(completter)
-	guessesleft=9
-	guessedletters=[]
-	document.getElementById("lettersGuessed").innerHTML = guessedletters;
-	document.getElementById("guesses-left").innerHTML =  guessesleft;
-}
- </script>
- </body>
+	<div class="sub-header">
+		<div class="start">
+		<button id="start">Start</button>
+	</div>
+		<div id="info">
+				<h2>Your wins: <b id="wins"></b></h2>
+				<h2>Your loses: <b id="loses"></b></h2>
+		  <div id="guesses">
+			<h2>Crystals Needed: <b id="computer-guess"></b></h2>
+			<h2 >Your Crystals: <b id="user-tally"></b></h2>
+		  </div>
+		</div>
+	</div>
+	<div id="message"></div>
+	<div class="container">
+		<div class="images">
+			<button class="crystal" value="12"><img src="assets/images/1.jpg"></button>
+			<button class="crystal" value="5"><img src="assets/images/2.jpg"></button>
+			<button class="crystal" value="1"><img src="assets/images/3.jpg"></button>
+			<button class="crystal" value="10"><img src="assets/images/4.jpg"></button>
+			
+		</div>
+	</div>
+</body>
 </html>
